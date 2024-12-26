@@ -1,0 +1,49 @@
+//@version=5
+indicator("EMA İZLEME TABLOSU", overlay=true)
+
+
+ema5 = ta.ema(close, 5)
+ema8 = ta.ema(close, 8)
+ema13 = ta.ema(close, 13)
+ema21 = ta.ema(close, 21)
+ema34 = ta.ema(close, 34)
+ema50 = ta.ema(close, 50)
+ema100 = ta.ema(close, 100)
+
+
+isAboveEma5 = close > ema5
+isAboveEma8 = close > ema8
+isAboveEma13 = close > ema13
+isAboveEma21 = close > ema21
+isAboveEma34 = close > ema34
+isAboveEma50 = close > ema50
+isAboveEma100 = close > ema100
+
+plot(ema5, title="EMA 5", color=color.blue)
+plot(ema8, title="EMA 8", color=color.orange)
+plot(ema13, title="EMA 13", color=color.purple)
+plot(ema21, title="EMA 21", color=color.green)
+plot(ema34, title="EMA 34", color=color.red)
+plot(ema50, title="EMA 50", color=color.teal)
+plot(ema100, title="EMA 100", color=color.fuchsia)
+
+
+var table emaTable = table.new(position.top_right, 2, 7, bgcolor=color.new(color.black, 80))
+
+
+table.cell(emaTable, 0, 0, "EMA 5", bgcolor=isAboveEma5 ? color.green : color.red, text_color=color.white)
+table.cell(emaTable, 0, 1, "EMA 8", bgcolor=isAboveEma8 ? color.green : color.red, text_color=color.white)
+table.cell(emaTable, 0, 2, "EMA 13", bgcolor=isAboveEma13 ? color.green : color.red, text_color=color.white)
+table.cell(emaTable, 0, 3, "EMA 21", bgcolor=isAboveEma21 ? color.green : color.red, text_color=color.white)
+table.cell(emaTable, 0, 4, "EMA 34", bgcolor=isAboveEma34 ? color.green : color.red, text_color=color.white)
+table.cell(emaTable, 0, 5, "EMA 50", bgcolor=isAboveEma50 ? color.green : color.red, text_color=color.white)
+table.cell(emaTable, 0, 6, "EMA 100", bgcolor=isAboveEma100 ? color.green : color.red, text_color=color.white)
+
+
+table.cell(emaTable, 1, 0, str.tostring(ema5, "#.0"), bgcolor=color.new(color.black, 50), text_color=color.white)
+table.cell(emaTable, 1, 1, str.tostring(ema8, "#.0"), bgcolor=color.new(color.black, 50), text_color=color.white)
+table.cell(emaTable, 1, 2, str.tostring(ema13, "#.0"), bgcolor=color.new(color.black, 50), text_color=color.white)
+table.cell(emaTable, 1, 3, str.tostring(ema21, "#.0"), bgcolor=color.new(color.black, 50), text_color=color.white)
+table.cell(emaTable, 1, 4, str.tostring(ema34, "#.0"), bgcolor=color.new(color.black, 50), text_color=color.white)
+table.cell(emaTable, 1, 5, str.tostring(ema50, "#.0"), bgcolor=color.new(color.black, 50), text_color=color.white)
+table.cell(emaTable, 1, 6, str.tostring(ema100, "#.0"), bgcolor=color.new(color.black, 50), text_color=color.white)
